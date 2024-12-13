@@ -1,0 +1,132 @@
+.container {
+    display: flex;
+    justify-content: space-between; /* Centers horizontally */
+    align-items: center;    /* Centers vertically */
+    height: 55vh;          /* Takes full viewport height */
+    width: 95%;            /* Full width of the viewport */
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    width: 100%;
+}
+
+form label{
+    color: white;
+    left: 10px;
+    position: relative;
+    top: 15px;
+    background-color: black;
+    width: fit-content;
+    padding: 5px;
+}
+
+
+input {
+    /* padding: 8px 20px; */
+    padding: 15px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 120%;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid white;
+    color:white;
+    font-family: 'poppins';
+}
+
+button {
+    margin-top: 20px;
+    background-color: #198974;;
+    color: white;   
+    padding: 10px;
+    /* width: 50%; */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* button:hover {
+    background-color: white; 
+    color: black;
+    transition: 0.3s;
+} */
+
+.navbar-logo img{
+    height :100px;
+    width : 100px;
+}
+
+.nav-links ul{
+    list-style: none;;
+    display: flex;
+    gap: 25px;
+}
+.nav-links ul li{
+    color: white;
+    font-size: 20px;
+}
+
+.container-nav{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.right-section{
+    img{
+        height: 450px;
+        width: 100%;
+
+    }
+}
+
+.container-text h2{
+    color :white;
+    font-weight: 600;
+    font-size: 40px;
+}
+.container-text p{
+    font-weight: 400;
+    font-size: 18px;
+    color: white;
+}
+
+.container-text{
+    max-width: 1250px;
+    width: 95%;
+    margin:  0 auto;
+    text-align: justify;
+    padding: 10px;
+}
+.container-profile{
+    display: flex;
+    gap: 20px;
+}
+
+.container-profile .card-profile{
+    border: 1px solid white;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 25px;
+}
+.card-profile button{
+    background-color: #198974;
+    margin: 10px;
+}
+
+.crud .profileSection ul li button {
+    background-color: #198974;
+}
+.crud{
+    display: flex;
+    justify-content: space-between;
+}
+.crud ul{
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
