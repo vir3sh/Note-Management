@@ -4,8 +4,14 @@ const userSchema = new mongoose.Schema({
     name:{type:String,required:true},
     email:{type:String,required:true,unique: true },
     password:{type:String,required:true},
-    createdOn:{type:Date,default:new Date().getTime()}
-});
+    lastLogin:{type:Date,required:false},
+    isVerified:{type:Boolean,default:false},
+    resetPasswordToken:String,
+    resetPasswordExpiresAt:Date,
+    VerificationToken:String,
+    VerificationTokenExpiresAt:Date,
+
+},{timestamps:true});
 
 const User = mongoose.model("User",userSchema);
 

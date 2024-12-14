@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const userRoutes = require('./Routes/userRoutes');
+const authRoutes = require('./Routes/userRoutes');
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // User Routes
-app.use('/api/user', userRoutes);
+app.use('/api/auth', authRoutes );
 
 // Error Handling Middleware
 // app.use((err, req, res, next) => {
