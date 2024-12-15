@@ -5,7 +5,7 @@ import { useAuth } from "../context/ContextProvider";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
-
+import reactimage from "./reactimage.png";
 function ProfilePage() {
   const { user } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -83,18 +83,25 @@ function ProfilePage() {
       </div>
 
       <div className="container-profile">
-        {notes.map((notes) => (
-          <div key={notes._id} className="card-profile">
-            <h3>{notes.title}</h3>
-            <p>{notes.description}</p>
-            <button>
-              <MdEdit />
-            </button>
-            <button onClick={() => deleteNote(notes._id)}>
-              <MdDelete />
-            </button>
+        {notes.length === 0 ? (
+          <div className="no-notes">
+            <img src={reactimage} alt="No Notes" />
+            <p>No notes available</p>
           </div>
-        ))}
+        ) : (
+          notes.map((note) => (
+            <div key={note._id} className="card-profile">
+              <h3>{note.title}</h3>
+              <p>{note.description}</p>
+              <button
+                className="Deletebtn"
+                onClick={() => deleteNote(note._id)}
+              >
+                <MdDelete />
+              </button>
+            </div>
+          ))
+        )}
       </div>
 
       <div className="btn-add">

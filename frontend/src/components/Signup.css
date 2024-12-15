@@ -39,7 +39,7 @@ input {
 }
 
 button {
-    margin-top: 20px;
+    /* margin-top: 10px; */
     background-color: #198974;;
     color: white;   
     padding: 10px;
@@ -102,37 +102,166 @@ button {
     text-align: justify;
     padding: 10px;
 }
-.container-profile{
-    display: flex;
-    gap: 20px;
-}
 
-.container-profile .card-profile{
-    border: 1px solid white;
-    border-radius: 10px;
-    width: fit-content;
-    padding: 25px;
-}
-.card-profile button{
-    background-color: #198974;
-    margin: 10px;
-}
-
-.crud .profileSection ul li button {
-    background-color: #198974;
-}
-.crud{
-    display: flex;
-    justify-content: space-between;
-}
-.crud ul{
-    list-style: none;
-    display: flex;
-    gap: 10px;
-}
 
 .btn-add{
     position: absolute;
-    right: 6px;
-    bottom: 9px;
+    right: 55px;
+    bottom: 40px;
 }
+
+  
+  
+/* Container for profile header */
+.crud {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profileSection {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px;
+  }
+  
+  /* Grid container for displaying notes */
+  .container-profile {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping of items in case there are more than can fit in a single row */
+    justify-content: center; /* Centers the items horizontally */
+    gap: 20px;
+    margin: 20px auto;
+    max-width: 1090px; /* Set a max-width for the container */
+    padding: 10px;
+    overflow: hidden; /* Prevents the content from spilling outside the container */
+  }
+  
+  .card-profile {
+    flex: 1 1 calc(33% - 20px); /* Flex-basis for three items per row, subtracting gap */
+    max-width: 320px; /* Max width for each card */
+    box-sizing: border-box;
+    overflow: hidden; /* Prevents content from overflowing each card */
+  }
+  
+  .no-notes {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .no-notes img {
+    max-width: 100%; /* Ensures the image scales within its container */
+    height: auto;
+    max-height: 300px; /* Limits the size of the image */
+  }
+  
+  @media (max-width: 768px) {
+    .card-profile {
+      flex: 1 1 calc(50% - 20px); /* Two items per row for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card-profile {
+      flex: 1 1 100%; /* One item per row for very small screens */
+    }
+  }
+  
+  
+  
+  /* Note card style */
+  .card-profile {
+    background-color: black;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius:9px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card-profile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-profile h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color:white;
+    margin-bottom: 10px;
+  }
+  
+  .card-profile p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  /* Delete button style */
+  .Deletebtn {
+    background-color: #27debf;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .Deletebtn:hover {
+    background-color: #ff1c1c;
+  }
+  
+  /* Add button */
+
+  .btn-add button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Media query for responsiveness */
+  @media (min-width: 600px) {
+    .container-profile {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+    }
+  }
+  
+  @media (min-width: 900px) {
+    .container-profile {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .container-profile {
+      grid-template-columns: repeat(5, 1fr); /* 5 columns for extra large screens */
+    }
+  }
+  
+
+  .no-notes {
+    display: flex;
+    flex-direction: column;
+    align-items: unset;
+    margin-top: 40px;
+    justify-content: center;
+    height: 300px; /* Adjust based on your layout */
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .no-notes img {
+    max-width: 400px; /* Increased size of the image */
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .no-notes p {
+    font-size: 18px;
+    color: #777;
+  }
+  
+
+  .loginbtn a{
+    text-decoration: none;
+    color: white;
+  }
