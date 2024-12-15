@@ -130,3 +130,9 @@ button {
     display: flex;
     gap: 10px;
 }
+
+.btn-add{
+    position: absolute;
+    right: 6px;
+    bottom: 9px;
+}

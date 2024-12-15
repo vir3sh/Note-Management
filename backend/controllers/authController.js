@@ -1,7 +1,8 @@
 const User = require('../Models/User')
 const bcrypt = require('bcryptjs');
 const generateTokenAndSetCookie  = require('../utils/generateTokenAndSetCookie');
- 
+const { sendVerificationEmail } = require('../mailtrap/emails');
+const { mailtrapClient, sender } = require( "./mail.config.js");
 
 const signup = async (req,res) =>{
     const {name,email,password} = req.body;
@@ -31,6 +32,8 @@ const signup = async (req,res) =>{
 
         generateTokenAndSetCookie(res,user._id);
 
+        sendVerificationEmail(user.email,VerificationToken);
+
         res.status(201).json({
             success:true,
             message:"user created succesfully",
@@ -43,6 +46,9 @@ const signup = async (req,res) =>{
         console.log(error)
     }
 }
+
+
+
  const login = async (req,res) =>{
     try {
         const{email,password} = req.body;

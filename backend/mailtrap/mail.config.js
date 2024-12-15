@@ -13,16 +13,5 @@ const sender = {
   address: "hello@demomailtrap.com",
   name: "Mailtrap Test",
 };
-const recipients = [
-  "pviresh508@gmail.com",
-];
 
-transport
-  .sendMail({
-    from: sender,
-    to: recipients,
-    subject: "You are awesome!",
-    text: "Congrats for sending test email with Mailtrap!",
-    category: "Integration Test",
-  })
-  .then(console.log, console.error);
+module.exports = { mailtrapClient, sender };

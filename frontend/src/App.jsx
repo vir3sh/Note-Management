@@ -1,23 +1,24 @@
-import Login from './components/Login'
-import Navbar from './components/Navbar'
-import ProfilePage from './components/ProfilePage'
-import Signup from './components/Signup'
-import {BrowserRouter as Router, Routes,Route} from 'react-router-dom'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
+import ProfilePage from "./components/ProfilePage";
+import ContextProvider from "./context/ContextProvider";
 
-const App = () => {
+function App() {
   return (
-    <>
-    <Navbar/>
-    <Router>
-    <Routes>
-      <Route path='/' element={<Signup/>} />
-      <Route path='/login' element={<Login/>} />
-      <Route path='/profile' element={<ProfilePage/>} />
-  
-    </Routes>
-    </Router>
-    </>
-  )
+    <ContextProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<ProfilePage />} />
+        </Routes>
+      </Router>
+    </ContextProvider>
+  );
 }
 
-export default App
+export default App;
