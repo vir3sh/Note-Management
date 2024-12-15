@@ -11,7 +11,6 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -20,7 +19,7 @@ const Register = () => {
         { name, email, password }
       );
       console.log(response);
-      navigate("/profile");
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
@@ -32,6 +31,7 @@ const Register = () => {
       <div className="container">
         <div className="left-section">
           <form onSubmit={handleSubmit}>
+            <h2 style={{ marginTop: "50px" }}>Sign Up</h2>
             <label htmlFor="name">Name</label>
             <input
               type="text"

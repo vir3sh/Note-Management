@@ -86,7 +86,7 @@ function ProfilePage() {
         {notes.length === 0 ? (
           <div className="no-notes">
             <img src={reactimage} alt="No Notes" />
-            <p>No notes available</p>
+            <p>No Notes Available</p>
           </div>
         ) : (
           notes.map((note) => (
@@ -105,7 +105,7 @@ function ProfilePage() {
       </div>
 
       <div className="btn-add">
-        <button onClick={() => setIsModalOpen(true)}>+</button>
+        <button onClick={() => setIsModalOpen(true)}> Add Notes </button>
         {isModalOpen && <Modal closeModal={closeModal} addNote={addNote} />}
       </div>
     </div>

@@ -10,7 +10,7 @@
 form {
     display: flex;
     flex-direction: column;
-    padding: 40px;
+    /* padding: 40px; */
     width: 100%;
 }
 
@@ -121,7 +121,7 @@ button {
   .profileSection {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: white;
     margin: 10px;
   }
   
