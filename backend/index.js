@@ -4,6 +4,7 @@ const authRoutes = require("./Routes/userRoutes");
 const notesRoutes = require("./Routes/notesRoutes");
 const cors = require("cors");
 const app = express();
+const authMiddleware = require("./middleware/authMiddleware");
 
 // Connect to MongoDB
 mongoose
@@ -20,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 // User Routes
 app.use("/api/auth", authRoutes);
-app.use("/api/notes", notesRoutes);
+app.use("/api/note", notesRoutes);
 
 // Error Handling Middleware
 // app.use((err, req, res, next) => {

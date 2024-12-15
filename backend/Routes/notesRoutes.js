@@ -1,54 +1,77 @@
 const express = require("express");
 const router = express.Router();
-const Notes = require("../Models/Notes");
+const Note = require("../Models/Note");
 const authMiddleware = require("../middleware/authMiddleware"); // Middleware to verify JWT
 
 // Create a note
-router.post("/notes", authMiddleware, async (req, res) => {
-  const { title, content } = req.body;
+router.post("/add", authMiddleware, async (req, res) => {
+  // console.log("Authorization Header:", req.headers.authorization);
   try {
-    const note = new Notes({ userId: req.user.id, title, content });
+    const { title, description } = req.body;
+
+    if (!title || !description) {
+      return res
+        .status(400)
+        .json({ success: "false", message: "please fill all fields" });
+    }
+
+    const note = new Note({
+      title,
+      description,
+      userId: req.user.id,
+    });
+
     await note.save();
-    res.status(201).json(note);
+
+    return res
+      .status(200)
+      .json({ success: "true", message: "note added successfully" });
   } catch (error) {
-    res.status(500).json({ error: "Failed to create note", error });
+    return res
+      .status(400)
+      .json({ success: "false", message: "note couldnot successfully" });
   }
 });
 
-// Read all notes
-router.get("/notes", authMiddleware, async (req, res) => {
+router.get("/", authMiddleware, async (req, res) => {
   try {
-    const notes = await Notes.find({ userId: req.user.id });
-    res.status(200).json(notes);
+    const userId = req.user.id; // Extract user ID from decoded token
+    const notes = await Note.find({ userId: userId }); // Assuming each note has a `user` field
+    res.json({ success: true, notes });
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch notes" });
+    return res
+      .status(400)
+      .json({ success: false, message: "could not get notes " });
   }
 });
 
-// Update a note
-router.put("/notes/:id", authMiddleware, async (req, res) => {
-  const { id } = req.params;
-  const { title, content } = req.body;
+router.put("/:id", authMiddleware, async (req, res) => {
   try {
-    const note = await Notes.findByIdAndUpdate(
-      id,
-      { title, content },
-      { new: true }
-    );
-    res.status(200).json(note);
+    const { title, description } = req.body;
+    const id = req.params;
+    const updateNote = await Note.findByIdAndUpdate(id, title, description);
+    res.json({ success: true, updateNote });
   } catch (error) {
-    res.status(500).json({ error: "Failed to update note" });
+    return res
+      .status(400)
+      .json({ success: false, message: "could not update notes ", error });
   }
 });
 
 // Delete a note
-router.delete("/notes/:id", authMiddleware, async (req, res) => {
-  const { id } = req.params;
+router.delete("/delete/:id", authMiddleware, async (req, res) => {
   try {
-    await Notes.findByIdAndDelete(id);
-    res.status(200).json({ message: "Note deleted" });
+    const { id } = req.params;
+
+    const deletedNote = await Note.findByIdAndDelete(id);
+
+    if (!deletedNote) {
+      return res.status(404).json({ success: false, error: "Note not found" });
+    }
+
+    res.json({ success: true, message: "Note deleted successfully" });
   } catch (error) {
-    res.status(500).json({ error: "Failed to delete note" });
+    res.status(500).json({ success: false, error: "Failed to delete note" });
   }
 });
 

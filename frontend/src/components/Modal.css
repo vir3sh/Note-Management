@@ -1,0 +1,72 @@
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #0c443a;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 100%;    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 10px;
+  }
+  
+  .modal-content label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  .modal-content input,
+  .modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: black;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: white;
+
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .modal-actions button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #75b798;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .modal-actions button:hover {
+    background-color: #cbcecd;
+  }
+  
+  .modal-actions button:last-child {
+    background-color: #75b798;
+    color: black;
+  }
+  
+  .modal-actions button:last-child:hover {
+    background-color: #cbcecd;
+  }
+  

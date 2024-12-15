@@ -1,23 +1,36 @@
 const jwt = require("jsonwebtoken");
+const User = require("../Models/User");
+const dotenv = require("dotenv");
+dotenv.config();
 
-const authMiddleware = (req, res, next) => {
-  const authHeader = req.header("Authorization"); // Get the Authorization header
-
-  // Check if the Authorization header is missing
-  if (!authHeader) {
-    return res.status(401).json({ error: "No token, authorization denied" });
-  }
-
-  // Extract the token and remove "Bearer " prefix
-  const token = authHeader.replace("Bearer ", "");
-
+const authMiddleware = async (req, res, next) => {
   try {
-    // Verify the token
+    const token = req.headers.authorization.split(" ")[1];
+    if (!token) {
+      return res
+        .status(400)
+        .json({ success: "false", message: "no  token found" });
+    }
+
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // Attach the decoded payload to req.user
-    next(); // Pass control to the next middleware or route handler
-  } catch (err) {
-    res.status(401).json({ error: "Token is not valid" });
+    if (!decoded) {
+      return res
+        .status(400)
+        .json({ success: "false", message: "couldnot decode token" });
+    }
+
+    const user = await User.findById({ _id: decoded.id });
+    if (!user) {
+      return res
+        .status(400)
+        .json({ success: "false", message: "couldnot find user" });
+    }
+
+    const newUser = { name: user.name, id: user._id };
+    req.user = newUser;
+    next();
+  } catch (error) {
+    console.log(error);
   }
 };
 
