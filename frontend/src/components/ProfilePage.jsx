@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Signup.css";
 import { MdEdit, MdDelete } from "react-icons/md";
-import { IoAddCircle } from "react-icons/io5";
 import { useAuth } from "../context/ContextProvider";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";

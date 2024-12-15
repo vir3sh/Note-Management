@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Modal.css"; // Assuming you will style the modal in this CSS file
 
 function Modal({ closeModal, addNote }) {

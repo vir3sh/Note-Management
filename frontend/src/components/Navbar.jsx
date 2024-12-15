@@ -17,11 +17,11 @@ function Navbar() {
         <img src={logo} alt="Profile icon" />
       </div>
       <div className="nav-links">
-        <ul>
+        {/* <ul>
           <li>Home</li>
           <li>About Us</li>
           <li>Contact Us</li>
-        </ul>
+        </ul> */}
       </div>
 
       {!user ? (
