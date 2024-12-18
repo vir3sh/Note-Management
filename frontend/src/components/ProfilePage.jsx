@@ -17,11 +17,14 @@ function ProfilePage() {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/note", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const { data } = await axios.get(
+          "https://note-management-y2co.vercel.app/api/note",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         setNotes(data.notes);
         setNotes(data.notes);
       } catch (error) {
@@ -34,7 +37,7 @@ function ProfilePage() {
   const addNote = async (title, description) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/note/add",
+        "https://note-management-y2co.vercel.app/api/note/add",
         {
           title,
           description,
@@ -57,7 +60,7 @@ function ProfilePage() {
   const deleteNote = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/note/delete/${id}`,
+        `https://note-management-y2co.vercel.app/api/note/delete/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
