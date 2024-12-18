@@ -6,9 +6,9 @@ const cors = require("cors");
 const app = express();
 const authMiddleware = require("./middleware/authMiddleware");
 
-// Connect to MongoDB
+// Connect to MongoDB  70fFH7rn4bfSRNgv
 mongoose
-  .connect("mongodb://localhost:27017/Book", {
+  .connect("mongodb+srv://pviresh508:70fFH7rn4bfSRNgv@book.mw7ob.mongodb.net/?retryWrites=true&w=majority&appName=book", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -28,6 +28,8 @@ app.use("/api/note", notesRoutes);
 //     console.error(err.stack);
 //     res.status(500).send('Something broke!');
 // });
+
+
 
 // Start Server
 const PORT = 5000;
