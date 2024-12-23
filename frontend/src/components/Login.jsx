@@ -15,8 +15,11 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://note-management-y2co.vercel.app/api/auth/login",
-        { email, password }
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/auth/login`,
+        {
+          email,
+          password,
+        }
       );
       if (response.data.success) {
         login(response.data.user);

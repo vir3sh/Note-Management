@@ -15,7 +15,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://note-management-y2co.vercel.app/api/auth/signup",
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/auth/signup`,
         { name, email, password }
       );
       console.log(response);

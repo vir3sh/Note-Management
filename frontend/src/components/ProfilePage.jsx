@@ -18,7 +18,7 @@ function ProfilePage() {
     const fetchNotes = async () => {
       try {
         const { data } = await axios.get(
-          "https://note-management-y2co.vercel.app/api/note",
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/note`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -37,7 +37,7 @@ function ProfilePage() {
   const addNote = async (title, description) => {
     try {
       const response = await axios.post(
-        "https://note-management-y2co.vercel.app/api/note/add",
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/note/add`,
         {
           title,
           description,
@@ -60,7 +60,7 @@ function ProfilePage() {
   const deleteNote = async (id) => {
     try {
       const response = await axios.delete(
-        `https://note-management-y2co.vercel.app/api/note/delete/${id}`,
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/note/delete/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
