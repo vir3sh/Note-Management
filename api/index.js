@@ -1,38 +1,20 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const authRoutes = require("./Routes/userRoutes");
-const notesRoutes = require("./Routes/notesRoutes");
-const cors = require("cors");
+const { default: mongoose } = require("mongoose");
+const userRouter = require("./routes/userRoutes.js");
+const notesRoutes = require("./routes/notesRoutes");
+require("dotenv").config();
+
 const app = express();
-const authMiddleware = require("./middleware/authMiddleware");
-
-// Connect to MongoDB  70fFH7rn4bfSRNgv
-mongoose
-  .connect("mongodb+srv://pviresh508:70fFH7rn4bfSRNgv@book.mw7ob.mongodb.net/?retryWrites=true&w=majority&appName=book", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("MongoDB connection error:", err));
-
-// Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
-// User Routes
-app.use("/api/auth", authRoutes);
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then(() => console.log("database connected"))
+  .catch((error) => console.log("eror while connecting database", error));
+
+app.use("/api/user", userRouter);
 app.use("/api/note", notesRoutes);
 
-// Error Handling Middleware
-// app.use((err, req, res, next) => {
-//     console.error(err.stack);
-//     res.status(500).send('Something broke!');
-// });
-
-
-
-// Start Server
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(5000, () => {
+  console.log("hello world");
 });
